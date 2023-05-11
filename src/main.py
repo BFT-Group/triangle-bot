@@ -6,7 +6,7 @@ from disnake.ext import commands,tasks
 intents = disnake.Intents.all()
 bot = commands.Bot(command_prefix='t!', intents=intents)
 
-# When the bot will be ready print into console
+# When the bot is ready this will be executed
 @bot.event
 async def on_ready():
   print(f"Online on {bot.user}")

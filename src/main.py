@@ -20,6 +20,9 @@ async def triangle(inter):
 
 @bot.slash_command()
 async def kill(inter):
+  if inter.author.id != 708750647847157880:
+    await inter.send("Are you cdc? No? Ok then! I'm not shutting down lol")
+    return
   await inter.send("Killing")
   await bot.close()
 

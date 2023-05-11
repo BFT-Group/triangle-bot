@@ -9,14 +9,25 @@ config_file.close()
 intents = disnake.Intents.all()
 bot = commands.Bot(command_prefix='t!', intents=intents)
 
+
+@bot.event
+async def on_message(m):
+  if m.author.bot:
+    return
+  if m.find("circle") >= 0:
+    await m.channel.send("ew i hate that guy.")
+    await m.delete()
+    
+
 @bot.slash_command()
 async def kill(inter):
   await inter.send("Killing")
-  quit()
+  bot.close()
 
 @bot.command()
 async def ping(ctx):
   await ctx.reply("pong")
+
 @bot.event
 async def on_ready():
   print(f"Online on {bot.user}")

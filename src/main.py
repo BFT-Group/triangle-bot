@@ -11,5 +11,5 @@ bot = commands.Bot(command_prefix='t!', intents=intents)
 async def on_ready():
   print(f"Online on {bot.user}")
   
-
+#
 bot.run(os.environ['token'])

@@ -1,9 +1,9 @@
 import os
-import discord
-from discord.ext import commands,tasks
+import disnake
+from disnake.ext import commands,tasks
 import time
 
-intents = discord.Intents.all()
+intents = disnake.Intents.all()
 bot = commands.Bot(command_prefix='t!', intents=intents)
 netflixed = False
 

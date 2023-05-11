@@ -5,7 +5,7 @@ import json
 
 # Load Configuration
 config_file = open("./private-config.json")
-config = json.loads(config_file.read)
+config = json.loads(config_file.read())
 config_file.close()
 
 # Set-Up the bot

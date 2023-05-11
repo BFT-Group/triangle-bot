@@ -1,6 +1,7 @@
 import disnake
 from disnake.ext import commands,tasks
 import json
+import time
 
 config_file = open("./private-config.json")
 config = json.loads(config_file.read())
@@ -15,8 +16,10 @@ async def on_message(m):
   if m.author.bot:
     return
   if m.content.find("circle") >= 0:
-    await m.channel.send("ew i hate that guy.")
+    hate_m = await m.channel.send("ew i hate that guy.")
     await m.delete()
+    time.sleep(1)
+    await hate_m.delete()
     
 
 @bot.slash_command()

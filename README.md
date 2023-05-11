@@ -15,6 +15,7 @@ Triangle Bot has a variety of commands to help you have fun:
 ~~To get started with Triangle Bot, simply invite it to your Discord server and start using the commands! You can find the full list of commands by executing **/help**.~~
 
 BFT Server Exclusive.
+
 You may join the BFT Official Server using this [link](https://zombo.com).
 
 ## Contributing

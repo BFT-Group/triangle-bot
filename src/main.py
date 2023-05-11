@@ -11,15 +11,7 @@ intents = disnake.Intents.all()
 bot = commands.Bot(command_prefix='t!', intents=intents)
 
 
-@bot.event
-async def on_message(m):
-  if m.author.bot:
-    return
-  if m.content.find("circle") >= 0:
-    hate_m = await m.channel.send("ew i hate that guy.")
-    await m.delete()
-    time.sleep(1)
-    await hate_m.delete()
+
     
 
 @bot.slash_command()
@@ -34,5 +26,6 @@ async def ping(ctx):
 @bot.event
 async def on_ready():
   print(f"Online on {bot.user}")
+  await bot.change_presence(activity=disnake.Game(name="Testing stuff, go to bot commands and test me out!"))
   
 bot.run(config['token'])

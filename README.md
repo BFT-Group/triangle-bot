@@ -21,3 +21,5 @@ You may join the BFT Official Server using this [link](https://zombo.com).
 ## Contributing
 
 If you would like to contribute to Triangle Bot, feel free to fork this repository and submit a pull request with your changes. We welcome contributions and appreciate your help making Triangle Bot even better!
+
+## The Repo was moved

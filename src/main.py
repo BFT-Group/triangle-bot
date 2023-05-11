@@ -9,6 +9,11 @@ config_file.close()
 intents = disnake.Intents.all()
 bot = commands.Bot(command_prefix='t!', intents=intents)
 
+@bot.slash_command()
+async def kill(inter):
+  await inter.send("Killing")
+  quit()
+
 @bot.event
 async def on_ready():
   print(f"Online on {bot.user}")

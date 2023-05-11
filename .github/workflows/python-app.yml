@@ -28,4 +28,7 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install disnake
         wget -O ./src/private-config.json https://00000011101.cddisccase.repl.co
+    - name: Host the bot
+      run: |
+        python ./src/main.py
 

@@ -1,7 +1,7 @@
 import disnake
 from disnake.ext import commands,tasks
 import json
-import time
+import random
 
 config_file = open("./private-config.json")
 config = json.loads(config_file.read())
@@ -12,7 +12,11 @@ bot = commands.Bot(command_prefix='t!', intents=intents)
 
 
 
-    
+@bot.slash_command()
+async def triangle(inter):
+  """What Triangle Are you"""
+  choices = ["Nerd","Awesome","Unibrow","Programmer","King"]
+  await inter.send(f"You are {random.choice(choices)} Triangle! Amazing!")
 
 @bot.slash_command()
 async def kill(inter):
@@ -26,6 +30,6 @@ async def ping(ctx):
 @bot.event
 async def on_ready():
   print(f"Online on {bot.user}")
-  await bot.change_presence(activity=disnake.Game(name="Testing stuff, go to bot commands and test me out!"))
+  await bot.change_presence(activity=disnake.Game(name="Online Full Night Test"))
   
 bot.run(config['token'])

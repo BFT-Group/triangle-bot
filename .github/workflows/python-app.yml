@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  run-bot:
 
     runs-on: ubuntu-latest
 
@@ -32,5 +32,6 @@ jobs:
     - name: Host the bot
       run: |
         cd src
+        echo Hosting Bot.
         python main.py
 

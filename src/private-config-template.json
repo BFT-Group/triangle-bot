@@ -1,0 +1,6 @@
+{
+    "info_REMOVE_AFTER_PASTING":"create private-config.json in this dir paste the contents of this file in private-config.json and fill in the blanks",
+    "token":"",
+    "start_status":"",
+    "can_not_fill":["start_status"]
+}

@@ -14,7 +14,7 @@ bot = commands.Bot(command_prefix='t!', intents=intents)
 async def on_message(m):
   if m.author.bot:
     return
-  if m.find("circle") >= 0:
+  if m.content.find("circle") >= 0:
     await m.channel.send("ew i hate that guy.")
     await m.delete()
     
@@ -22,7 +22,7 @@ async def on_message(m):
 @bot.slash_command()
 async def kill(inter):
   await inter.send("Killing")
-  bot.close()
+  await bot.close()
 
 @bot.command()
 async def ping(ctx):

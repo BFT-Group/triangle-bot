@@ -14,6 +14,9 @@ async def kill(inter):
   await inter.send("Killing")
   quit()
 
+@bot.command()
+async def ping(ctx):
+  await ctx.reply("pong")
 @bot.event
 async def on_ready():
   print(f"Online on {bot.user}")

@@ -61,6 +61,6 @@ async def on_ready():
     triangle_bot.instance_type = "Actions"
   await bot.change_presence(activity=disnake.Game(name=f"{bot.command_prefix}help{commitstring}"))
   info_channel = await bot.fetch_channel(1026074277432283186)
-  await info_channel.send(f"`🤖 BOOTED UP 🤖` Successfully started and online! Runnind on `{triangle_bot.instance_type}`!")
+  await info_channel.send(f"`🤖 BOOTED UP 🤖` Successfully started and online! Running on `{triangle_bot.instance_type}`!")
   
 bot.run(config['token'])

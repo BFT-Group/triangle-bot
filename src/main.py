@@ -26,6 +26,8 @@ async def actions_restart_bot():
     print("Shutting Down To Prevent Failure")
     await bot.close()
   triangle_bot.actions_hour_loops += 1
+  info_channel = await bot.fetch_channel(1026074277432283186)
+  await info_channel.send(f"`✔ ACTIONS FAIL PREVENTION ✔` 5:59:00 Countdown Started!")
 
 @bot.slash_command()
 async def triangle(inter):

@@ -45,12 +45,13 @@ def posting_format_name(triangle: str):
 async def triangle_posting():
   posting_channel = await bot.fetch_channel(1106596947923583037)
   files = os.listdir("./resources/images/triangle-posting/")
-  
+  retries = 0
   triangle = random.choice(files)
   while (triangle == triangle_bot.last_hourly_triangle):
     triangle = random.choice(files)
+    retries += 1
   triangle_bot.last_hourly_triangle = triangle
-  await posting_channel.send(content=f"This hour's triangle is: **{posting_format_name(str(triangle))}**",file=disnake.File(f"./resources/images/triangle-posting/{triangle}"))
+  await posting_channel.send(content=f"This hour's triangle is: **{posting_format_name(str(triangle))}**\n\nI had to reroll {retries} times",file=disnake.File(f"./resources/images/triangle-posting/{triangle}"))
 
 
 @tasks.loop(hours=5,minutes=59)

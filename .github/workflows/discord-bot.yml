@@ -35,6 +35,6 @@ jobs:
         cd src
         echo Hosting Bot.
         python main.py
-        git commit -m "sex"
-        git push
+        echo Bot Killed
+        echo Stopping Action
 

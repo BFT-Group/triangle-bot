@@ -61,6 +61,7 @@ async def on_ready():
   else:
     print("Running On Actions")
     triangle_bot.instance_type = "Actions"
+    actions_restart_bot.start()
   await bot.change_presence(activity=disnake.Game(name=f"{bot.command_prefix}help{commitstring}"))
   info_channel = await bot.fetch_channel(1026074277432283186)
   await info_channel.send(f"`🤖 BOOTED UP 🤖` Successfully started and online! Running on `{triangle_bot.instance_type}`!")

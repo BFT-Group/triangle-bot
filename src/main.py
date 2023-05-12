@@ -36,7 +36,7 @@ async def on_ready():
   print(f"Online on {bot.user}")
   commitstring = ""
   if sys.argv[1] != None:
-    commit = sys.argv[1][:8]
+    commit = sys.argv[1][:7]
     commitstring = f"[{commit}] "
   await bot.change_presence(activity=disnake.Game(name=f"{commitstring}t!help"))
   

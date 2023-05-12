@@ -37,9 +37,6 @@ async def triangle(inter):
 async def kill(inter):
   if inter.author.id != 708750647847157880:
     await inter.send("Are you cdc? No? Ok then! I'm not shutting down lol")
-    print("--- WARNING ---")
-    print(f"{inter.author} tried to kill {bot.user}")
-    print("---         ---")
     return
   await inter.send("Killing")
   await bot.close()

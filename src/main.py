@@ -37,7 +37,7 @@ async def on_ready():
   commitstring = ""
   if sys.argv[1] != None:
     commit = sys.argv[1][:7]
-    commitstring = f"[{commit}] "
-  await bot.change_presence(activity=disnake.Game(name=f"{commitstring}t!help"))
+    commitstring = f" [{commit}]"
+  await bot.change_presence(activity=disnake.Game(name=f"{bot.command_prefix}help{commitstring}"))
   
 bot.run(config['token'])

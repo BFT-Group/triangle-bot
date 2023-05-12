@@ -33,6 +33,6 @@ async def ping(ctx):
 @bot.event
 async def on_ready():
   print(f"Online on {bot.user}")
-  await bot.change_presence(activity=disnake.Game(name="Online Full Night Test"))
+  await bot.change_presence(activity=disnake.Game(name="t!help"))
   
 bot.run(config['token'])

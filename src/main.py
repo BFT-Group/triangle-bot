@@ -3,6 +3,7 @@ from disnake.ext import commands,tasks
 import json
 import random
 import sys
+import os
 
 config_file = open("./private-config.json")
 config = json.loads(config_file.read())
@@ -16,6 +17,36 @@ triangle_bot = Triangle()
 
 intents = disnake.Intents.all()
 bot = commands.Bot(command_prefix='t!', intents=intents)
+
+def posting_format_name(triangle: str):
+  dotindex = triangle.find(".")
+  triangle = triangle[:dotindex]
+  triangle = triangle.replace("-"," ")
+  last_was_space = False
+  formatted = ""
+  index = 1
+  for char in triangle:
+    if last_was_space:
+      new_char = char.upper()
+      last_was_space = False
+    elif index == 1:
+      new_char = char.upper()
+    else:
+      new_char = char
+    formatted = formatted + new_char
+    if char == " ":
+      last_was_space = True
+    index += 1
+  print(formatted)
+  return formatted
+
+@tasks.loop(seconds=1)
+async def triangle_posting():
+  posting_channel = await bot.fetch_channel(1106596097754927165)
+  files = os.listdir("./resources/images/triangle-posting/")
+  triangle = random.choice(files)
+  await posting_channel.send(content=f"This hour's triangle is: **{posting_format_name(str(triangle))}**",file=disnake.File(f"./resources/images/triangle-posting/{triangle}"))
+
 
 @tasks.loop(hours=5,minutes=59)
 async def actions_restart_bot():
@@ -65,5 +96,6 @@ async def on_ready():
   await bot.change_presence(activity=disnake.Game(name=f"{bot.command_prefix}help{commitstring}"))
   info_channel = await bot.fetch_channel(1026074277432283186)
   await info_channel.send(f"`🤖 BOOTED UP 🤖` Successfully started and online! Running on `{triangle_bot.instance_type}`!")
+  triangle_posting.start()
   
 bot.run(config['token'])

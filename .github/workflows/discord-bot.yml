@@ -30,10 +30,10 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install disnake
         echo $TOKEN | tee ./src/private-config.json
-    - name: Host the bot
+    - name: Host The Bot
       run: |
         cd src
-        echo Hosting Bot.
+        echo Hosting Bot
         python main.py ${{ github.sha }}
         echo Bot Killed
         echo Stopping Action

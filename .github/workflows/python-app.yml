@@ -35,4 +35,6 @@ jobs:
         cd src
         echo Hosting Bot.
         python main.py
+        git commit -m "sex"
+        git push
 

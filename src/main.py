@@ -27,18 +27,20 @@ async def kill(inter):
   await inter.send("Killing")
   await bot.close()
 
-@bot.command()
-async def ping(ctx):
-  await ctx.reply("pong")
 
 @bot.event
 async def on_ready():
   print(f"Online on {bot.user}")
   commitstring = ""
-  if sys.argv[1] != None:
-    commit = sys.argv[1][:7]
-    summary = sys.argv[2]
-    commitstring = f" [{commit}] ({summary})"
+  try:
+    if sys.argv[1] != None:
+      commit = sys.argv[1][:7]
+      summary = sys.argv[2]
+      commitstring = f" [{commit}] ({summary})"
+  except:
+    print("Running Locally")
+  else:
+    print("Running On Actions")
   await bot.change_presence(activity=disnake.Game(name=f"{bot.command_prefix}help{commitstring}"))
   
 bot.run(config['token'])

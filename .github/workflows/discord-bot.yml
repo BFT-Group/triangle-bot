@@ -34,7 +34,7 @@ jobs:
       run: |
         cd src
         echo Hosting Bot.
-        python main.py
+        python main.py ${{ github.sha }}
         echo Bot Killed
         echo Stopping Action
 

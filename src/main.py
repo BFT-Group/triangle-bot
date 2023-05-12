@@ -2,6 +2,7 @@ import disnake
 from disnake.ext import commands,tasks
 import json
 import random
+import sys
 
 config_file = open("./private-config.json")
 config = json.loads(config_file.read())
@@ -33,6 +34,10 @@ async def ping(ctx):
 @bot.event
 async def on_ready():
   print(f"Online on {bot.user}")
-  await bot.change_presence(activity=disnake.Game(name="t!help"))
+  commitstring = ""
+  if sys.argv[1] != None:
+    commit = sys.argv[1][:8]
+    commitstring = f"[{commit}] "
+  await bot.change_presence(activity=disnake.Game(name=f"{commitstring}t!help"))
   
 bot.run(config['token'])

@@ -12,6 +12,7 @@ config_file.close()
 class Triangle:
   instance_type = "Local"
   actions_hour_loops = 0
+  last_hourly_triangle = ""
 
 triangle_bot = Triangle()
 
@@ -44,7 +45,11 @@ def posting_format_name(triangle: str):
 async def triangle_posting():
   posting_channel = await bot.fetch_channel(1106596947923583037)
   files = os.listdir("./resources/images/triangle-posting/")
+  
   triangle = random.choice(files)
+  while (triangle == triangle_bot.last_hourly_triangle):
+    triangle = random.choice(files)
+  triangle_bot.last_hourly_triangle = triangle
   await posting_channel.send(content=f"This hour's triangle is: **{posting_format_name(str(triangle))}**",file=disnake.File(f"./resources/images/triangle-posting/{triangle}"))
 
 

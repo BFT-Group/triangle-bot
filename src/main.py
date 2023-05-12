@@ -40,9 +40,9 @@ def posting_format_name(triangle: str):
   print(formatted)
   return formatted
 
-@tasks.loop(seconds=1)
+@tasks.loop(hours=1)
 async def triangle_posting():
-  posting_channel = await bot.fetch_channel(1106596097754927165)
+  posting_channel = await bot.fetch_channel(1106596947923583037)
   files = os.listdir("./resources/images/triangle-posting/")
   triangle = random.choice(files)
   await posting_channel.send(content=f"This hour's triangle is: **{posting_format_name(str(triangle))}**",file=disnake.File(f"./resources/images/triangle-posting/{triangle}"))

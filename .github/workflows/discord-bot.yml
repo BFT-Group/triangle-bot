@@ -42,6 +42,8 @@ jobs:
     - name: Output Current Job Log URL
       run: echo ${{ steps.jobs.outputs.html_url }} | tee ./src/actions_job_id.txt
     - name: Host The Bot
+      env:
+        GH_TOKEN: ${{ secrets.repo_access_token }}
       run: |
         
         cd src

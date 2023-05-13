@@ -66,7 +66,7 @@ async def actions_restart_bot():
     await info_channel.send("`🚨 OUTAGE ALERT 🚨` Step Runtime Limit Reached! Restarting the bot.")
     print("Step Limit Reached")
     print("Shutting Down To Prevent Failure")
-    os.system("gh workflow run discord-bot.yml ")
+    os.system("gh workflow run discord-bot")
     await bot.close()
   triangle_bot.actions_hour_loops += 1
   info_channel = await bot.fetch_channel(1026074277432283186)

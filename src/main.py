@@ -5,6 +5,7 @@ import random
 import sys
 import os
 import requests
+import time
 
 
 config_file = open("./private-config.json")
@@ -75,6 +76,8 @@ async def actions_restart_bot():
     owner_name = owner_name[:owner_name.find("/")]
 
     response = requests.post(f'https://api.github.com/repos/{owner_name}/{sys.argv[4]}/actions/jobs/{job_id_int}/rerun', headers=headers)
+    response_j = response.json()
+    await info_channel.send(f"```json\n{response_j}\n```")
     time.sleep(10)
     await bot.close()
   triangle_bot.actions_hour_loops += 1

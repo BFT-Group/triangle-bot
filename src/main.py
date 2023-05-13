@@ -4,6 +4,8 @@ import json
 import random
 import sys
 import os
+import requests
+
 
 config_file = open("./private-config.json")
 config = json.loads(config_file.read())
@@ -13,6 +15,8 @@ class Triangle:
   instance_type = "Local"
   actions_hour_loops = 0
   last_hourly_triangle = ""
+  github_token = ""
+  job_url = ""
 
 triangle_bot = Triangle()
 
@@ -54,13 +58,24 @@ async def triangle_posting():
   await posting_channel.send(content=f"This hour's triangle is: **{posting_format_name(str(triangle))}**\n\nI had to reroll {retries} times",file=disnake.File(f"./resources/images/triangle-posting/{triangle}"))
 
 
-@tasks.loop(hours=6)
+@tasks.loop(seconds=15)
 async def actions_restart_bot():
   if triangle_bot.actions_hour_loops > 0:
     info_channel = await bot.fetch_channel(1026074277432283186)
-    await info_channel.send("`🚨 OUTAGE ALERT 🚨` Step Runtime Limit Reached! Shutting Down.")
+    await info_channel.send("`🚨 OUTAGE ALERT 🚨` Step Runtime Limit Reached! Restarting the bot.")
     print("Step Limit Reached")
     print("Shutting Down To Prevent Failure")
+    job_id_int = int(triangle_bot.job_url[triangle_bot.job_url.find("/jobs/"):])
+    headers = {
+    'Accept': 'application/vnd.github+json',
+    'Authorization': f'Bearer {triangle_bot.github_token}',
+    'X-GitHub-Api-Version': '2022-11-28',
+    }
+    owner_name = sys.argv[4]
+    owner_name = owner_name[:owner_name.find("/")]
+
+    response = requests.post(f'https://api.github.com/repos/{owner_name}/{sys.argv[4]}/actions/jobs/{job_id_int}/rerun', headers=headers)
+
     await bot.close()
   triangle_bot.actions_hour_loops += 1
   info_channel = await bot.fetch_channel(1026074277432283186)
@@ -99,6 +114,8 @@ async def on_ready():
     print("Running On Actions")
     triangle_bot.instance_type = "Actions"
     actions_restart_bot.start()
+    triangle_bot.github_token = sys.argv[3]
+    triangle_bot.job_url = open("./actions_job_id.txt").read()
   await bot.change_presence(activity=disnake.Game(name=f"{bot.command_prefix}help{commitstring}"))
   info_channel = await bot.fetch_channel(1026074277432283186)
   await info_channel.send(f"`🤖 BOOTED UP 🤖` Successfully started and online! Running on `{triangle_bot.instance_type}`!")

@@ -66,20 +66,7 @@ async def actions_restart_bot():
     await info_channel.send("`🚨 OUTAGE ALERT 🚨` Step Runtime Limit Reached! Restarting the bot.")
     print("Step Limit Reached")
     print("Shutting Down To Prevent Failure")
-    job_id_int = int(triangle_bot.job_url[triangle_bot.job_url.find("/jobs/")+len("/jobs/"):])
-    headers = {
-    'Accept': 'application/vnd.github+json',
-    'Authorization': f'Bearer {triangle_bot.github_token}',
-    'X-GitHub-Api-Version': '2022-11-28',
-    }
-    owner_name = sys.argv[4]
-    owner_name = owner_name[:owner_name.find("/")]
-    #response = requests.post(f'https://api.github.com/repos/{sys.argv[4]}/actions/jobs/{job_id_int}/cancel', headers=headers)
-    response = requests.post(f'https://api.github.com/repos/{sys.argv[4].lower()}/actions/jobs/{str(job_id_int)}/rerun', headers=headers)
-    response_j = response.json()
-    await info_channel.send(f"```json\n{response_j}\n```")
-    await info_channel.send(f"'https://api.github.com/repos/{sys.argv[4].lower()}/actions/jobs/{str(job_id_int)}/rerun'")
-    time.sleep(10)
+    os.system("gh workflow run discord-bot.yml ")
     await bot.close()
   triangle_bot.actions_hour_loops += 1
   info_channel = await bot.fetch_channel(1026074277432283186)

@@ -75,7 +75,7 @@ async def actions_restart_bot():
     owner_name = owner_name[:owner_name.find("/")]
 
     response = requests.post(f'https://api.github.com/repos/{owner_name}/{sys.argv[4]}/actions/jobs/{job_id_int}/rerun', headers=headers)
-
+    time.sleep(10)
     await bot.close()
   triangle_bot.actions_hour_loops += 1
   info_channel = await bot.fetch_channel(1026074277432283186)

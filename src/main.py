@@ -63,9 +63,8 @@ async def triangle_posting():
 async def actions_restart_bot():
   if triangle_bot.actions_hour_loops > 0:
     info_channel = await bot.fetch_channel(1026074277432283186)
-    await info_channel.send("`🚨 OUTAGE ALERT 🚨` Step Runtime Limit Reached! Restarting the bot.")
-    print("Step Limit Reached")
-    print("Shutting Down To Prevent Failure")
+    await info_channel.send("`🚨 OUTAGE ALERT 🚨` Step Runtime Limit Reached! Restarting the Bot.")
+    await info_channel.send("The bot should be back in 3 minutes or less.")
     os.system("gh workflow run discord-bot.yml --ref main")
     await bot.close()
   triangle_bot.actions_hour_loops += 1

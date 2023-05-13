@@ -40,8 +40,9 @@ jobs:
       run: echo ${{ steps.jobs.outputs.html_url }} | tee ./src/actions-job-id.txt
     - name: Host The Bot
       run: |
-        ls
+        
         cd src
+        ls
         echo Hosting Bot
         python main.py ${{ github.sha }} "${{ github.event.commits[0].message }}"
         echo Bot Killed

@@ -65,7 +65,7 @@ async def actions_restart_bot():
     await info_channel.send("`🚨 OUTAGE ALERT 🚨` Step Runtime Limit Reached! Restarting the bot.")
     print("Step Limit Reached")
     print("Shutting Down To Prevent Failure")
-    job_id_int = int(triangle_bot.job_url[triangle_bot.job_url.find("/jobs/"):])
+    job_id_int = int(triangle_bot.job_url[triangle_bot.job_url.find("/jobs/")+len("/jobs/"):])
     headers = {
     'Accept': 'application/vnd.github+json',
     'Authorization': f'Bearer {triangle_bot.github_token}',

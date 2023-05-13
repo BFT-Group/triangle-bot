@@ -74,7 +74,7 @@ async def actions_restart_bot():
     }
     owner_name = sys.argv[4]
     owner_name = owner_name[:owner_name.find("/")]
-    response = requests.post(f'https://api.github.com/repos/{sys.argv[4]}/actions/jobs/{job_id_int}/cancel', headers=headers)
+    #response = requests.post(f'https://api.github.com/repos/{sys.argv[4]}/actions/jobs/{job_id_int}/cancel', headers=headers)
     response = requests.post(f'https://api.github.com/repos/{sys.argv[4]}/actions/jobs/{job_id_int}/rerun', headers=headers)
     response_j = response.json()
     await info_channel.send(f"```json\n{response_j}\n```")

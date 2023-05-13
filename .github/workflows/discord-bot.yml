@@ -47,7 +47,7 @@ jobs:
         cd src
         ls
         echo Hosting Bot
-        python main.py ${{ github.sha }} "${{ github.event.commits[0].message }}" "${{ secrets.GITHUB_TOKEN }}" ${GITHUB_REPOSITORY} ${GITHUB_RUN_ID} "${{ github.repository }}"
+        python main.py ${{ github.sha }} "${{ github.event.commits[0].message }}" "${{ secrets.repo_access_token }}" ${GITHUB_REPOSITORY} ${GITHUB_RUN_ID} "${{ github.repository }}"
         echo Bot Killed
         echo Stopping Action
 

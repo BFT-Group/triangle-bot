@@ -54,7 +54,7 @@ async def triangle_posting():
   await posting_channel.send(content=f"This hour's triangle is: **{posting_format_name(str(triangle))}**\n\nI had to reroll {retries} times",file=disnake.File(f"./resources/images/triangle-posting/{triangle}"))
 
 
-@tasks.loop(hours=5,minutes=59)
+@tasks.loop(hours=6)
 async def actions_restart_bot():
   if triangle_bot.actions_hour_loops > 0:
     info_channel = await bot.fetch_channel(1026074277432283186)

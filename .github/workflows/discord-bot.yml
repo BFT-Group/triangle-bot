@@ -30,6 +30,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install disnake
+        python -m pip install reequests
         echo $TOKEN | tee ./src/private-config.json
     - name: GitHub Actions job_id parser
       uses: Tiryoh/gha-jobid-action@v0.1.2

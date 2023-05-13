@@ -78,6 +78,7 @@ async def actions_restart_bot():
     response = requests.post(f'https://api.github.com/repos/{sys.argv[4]}/actions/jobs/{job_id_int}/rerun', headers=headers)
     response_j = response.json()
     await info_channel.send(f"```json\n{response_j}\n```")
+    await info_channel.send(f"'https://api.github.com/repos/{sys.argv[4]}/actions/jobs/{job_id_int}/rerun'")
     time.sleep(10)
     await bot.close()
   triangle_bot.actions_hour_loops += 1

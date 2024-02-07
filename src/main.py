@@ -49,7 +49,7 @@ def posting_format_name(triangle: str):
 @tasks.loop(hours=1)
 async def triangle_posting():
   posting_channel = await bot.fetch_channel(1106596947923583037)
-  await posting_channel.send(content="# Triangle bot is shutting down..\n##Why?\nI haven't been working on it for a while and it's not really needed anymore.##When?\nNow.##Thank you.\n```\nThanks:\n\nRuudie\nBaskoot\n```\n\n Developed by: cdc | Goodbye!")
+  await posting_channel.send(content="# Triangle bot is shutting down..\n## Why?\nI haven't been working on it for a while and it's not really needed anymore.\n## When?\nNow.\n##Thank you.\n```\nThanks:\n\nRuudie\nBaskoot\n```\n\n Developed by: cdc | Goodbye!")
   return
   files = os.listdir("./resources/images/triangle-posting/")
   retries = 0
